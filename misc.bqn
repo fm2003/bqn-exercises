@@ -2,20 +2,13 @@ _st ← {1↓𝔽⟜»}
 
 ∧´ =_st -_st ∧ 3‿1‿7‿9‿5
 
-# RoundPos ← (⌊0.5⊸+)⌾(10⊸×)  # round to nearest tenth, ties towards infinity
-# Round ↩ (××(⌊0.5⊸+)∘|)⌾(10⊸×)
 RoundPos ← (·⌊0.5+⊢)⌾(10⊸×)  # round to nearest tenth, ties towards infinity
 Round ← (××·⌊0.5+|)⌾(10⊸×)  # round to nearest tenth, ties away from zero
 Round 3.149
 
-# Diff ← ¬∘∊/⊣
-# NoConnections ← ⊢´¨Diff⊣´¨
-# NoConnections ← ¯1⊸⊑¨Diff⊑¨
-
 Without ← ¬∘∊/⊣
 NoConnections ← { Without´ ⌽<˘⍉> 𝕩 }
 NoConnections "BC"‿"DB"‿"CA"  # "A"
-
 
 s←•Fmt 3.14
 Replace ← {
@@ -23,8 +16,6 @@ Replace ← {
   str+(old=str)×new-str
 }
 ⟨'.',','⟩ Replace s
-
-# •Show "123"
 
 <⟜'a'⊸/ "Big Questions Notation"
 
