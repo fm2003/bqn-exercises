@@ -1,0 +1,36 @@
+# Converts the given floating-point number to a fraction ⟨numerator, denominator⟩,
+# with the denominator limited by the given maxDen.
+# This version uses brute force and simply tries all denominators up to maxDen.
+Float2Fraction ← { maxDen 𝕊 f:
+    ! maxDen ≥ 1
+    denominators ← 1+↕maxDen
+    numerators ← (××·⌊0.5+|) denominators×f
+    i ← ⊑⍋|f-numerators÷denominators  # Index of n÷d with lowest absolute difference from f
+    i⊸⊑¨⟨numerators, denominators⟩
+}
+
+# This version uses continuous fractions to end up at the result.
+Float2FractionFast ← { maxDen 𝕊 f:
+    ! maxDen ≥ 1
+    NextConvergent ← { g‿p0‿q0‿p1‿q1:
+        ⟨÷(g-⌊g), p1, q1, p0+p1×⌊g, q0+q1×⌊g⟩
+    }
+
+    ·‿p0‿q0‿p1‿q1 ← NextConvergent •_while_ { g‿·‿q0‿·‿q1: (q0+q1×⌊g) ≤ maxDen } ⟨|f, 0, 1, 1, 0⟩
+    k ← ⌊(maxDen-q0)÷q1
+    ⟨n1, d1⟩ ← ⟨p0+k×p1, q0+k×q1⟩
+    sign ← ×f
+    candidates ← ⟨⟨sign×p1, q1⟩, ⟨sign×n1, d1⟩⟩
+    i ← ⊑⍋|f-÷´¨ candidates
+    i⊑candidates
+}
+
+•Show 50 Float2FractionFast π
+
+# Tests:
+⟨_Assert1⟩ ⇐ •Import "deps/assert.bqn"
+
+(99 Float2FractionFast π) ≡_Assert1 ⟨311, 99⟩
+(99 Float2FractionFast ¯π) ≡_Assert1 ⟨¯311, 99⟩
+(1 Float2FractionFast π) ≡_Assert1 ⟨3, 1⟩
+(1000 Float2FractionFast √2) ≡_Assert1 ⟨1393, 985⟩
