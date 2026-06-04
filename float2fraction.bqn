@@ -9,7 +9,7 @@ Float2Fraction ← { maxDen 𝕊 f:
     i⊸⊑¨⟨numerators, denominators⟩
 }
 
-# This version uses continuous fractions to end up at the result.
+# This version uses continued fractions to end up at the result.
 Float2FractionFast ← { maxDen 𝕊 f:
     ! maxDen ≥ 1
     NextConvergent ← { g‿p0‿q0‿p1‿q1:
