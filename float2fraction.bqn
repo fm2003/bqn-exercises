@@ -18,7 +18,7 @@ Float2FractionFast ← { maxDen 𝕊 f:
 
     ·‿p0‿q0‿p1‿q1 ← NextConvergent •_while_ { g‿·‿q0‿·‿q1: (q0+q1×⌊g) ≤ maxDen } ⟨|f, 0, 1, 1, 0⟩
     k ← ⌊(maxDen-q0)÷q1
-    ⟨n1, d1⟩ ← ⟨p0+k×p1, q0+k×q1⟩
+    ⟨n1, d1⟩ ← ⟨p0+k×p1, q0+k×q1⟩  # Best semi-convergent with denominator≤maxDen
     sign ← ×f
     candidates ← ⟨⟨sign×p1, q1⟩, ⟨sign×n1, d1⟩⟩
     i ← ⊑⍋|f-÷´¨ candidates
