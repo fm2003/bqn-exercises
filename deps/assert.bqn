@@ -6,7 +6,7 @@ FormatOperands ← {
 }
 
 _Assert_ ← {
-    message ← "Expression was unexpectedly not " ∾ (•Fmt 𝕘) ∾ "." ∾ (@+10) ∾ 𝕨 FormatOperands 𝕩
+    message ← "Result of " ∾ (•Fmt 𝕗) ∾ " was unexpectedly not " ∾ (•Fmt 𝕘) ∾ "." ∾ (@+10) ∾ 𝕨 FormatOperands 𝕩
     Unpack ← { ⟨⟩≡≢𝕩 ? ⊑𝕩 ; 𝕩 }  # Convert unit array to atom if needed
     message ! (𝕘 ≡ Unpack 𝕨𝔽𝕩)
 }
