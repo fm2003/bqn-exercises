@@ -34,3 +34,4 @@ Float2FractionFast ← { maxDen 𝕊 f:
 (99 Float2FractionFast ¯π) ≡_Assert1 ⟨¯311, 99⟩
 (1 Float2FractionFast π) ≡_Assert1 ⟨3, 1⟩
 (1000 Float2FractionFast √2) ≡_Assert1 ⟨1393, 985⟩
+(1000 Float2FractionFast 1.25) ≡_Assert1 ⟨5, 4⟩
