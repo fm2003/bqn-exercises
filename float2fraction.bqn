@@ -16,13 +16,9 @@ Float2FractionFast ← { maxDen 𝕊 f:
         ⟨÷(g-⌊g), p1, q1, p0+p1×⌊g, q0+q1×⌊g⟩
     }
 
-    ·‿p0‿q0‿p1‿q1 ← NextConvergent •_while_ { g‿·‿q0‿·‿q1: (q0+q1×⌊g) ≤ maxDen } ⟨|f, 0, 1, 1, 0⟩
-    k ← ⌊(maxDen-q0)÷q1
-    ⟨n1, d1⟩ ← ⟨p0+k×p1, q0+k×q1⟩  # Best semi-convergent with denominator≤maxDen
-    sign ← ×f
-    candidates ← ⟨⟨sign×p1, q1⟩, ⟨sign×n1, d1⟩⟩
-    i ← ⊑⍋|f-÷´¨ candidates
-    i⊑candidates
+    ·‿·‿q0‿p1‿q1 ← c ← NextConvergent •_while_ { g‿·‿q0‿·‿q1: (q0+q1×⌊g) ≤ maxDen } ⟨f, 0, 1, 1, 0⟩
+    ·‿·‿·‿n1‿d1 ← NextConvergent ⟨(maxDen-q0)÷q1⟩∾1↓c  # Best semi-convergent with denominator≤maxDen
+    ⟨p1, q1⟩ <○{|f-÷´}◶⊢‿⊣ ⟨n1, d1⟩  # Return the fraction with the smallest absolute difference from f
 }
 
 •Show 50 Float2FractionFast π
@@ -33,5 +29,7 @@ Float2FractionFast ← { maxDen 𝕊 f:
 (99 Float2FractionFast π) ≡_Assert1 ⟨311, 99⟩
 (99 Float2FractionFast ¯π) ≡_Assert1 ⟨¯311, 99⟩
 (1 Float2FractionFast π) ≡_Assert1 ⟨3, 1⟩
+(6 Float2FractionFast π) ≡_Assert1 ⟨19, 6⟩
+(6 Float2FractionFast ¯π) ≡_Assert1 ⟨¯19, 6⟩
 (1000 Float2FractionFast √2) ≡_Assert1 ⟨1393, 985⟩
 (1000 Float2FractionFast 1.25) ≡_Assert1 ⟨5, 4⟩
