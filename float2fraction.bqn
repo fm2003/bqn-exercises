@@ -12,10 +12,7 @@ Float2Fraction ← { maxDen 𝕊 f:
 # This version uses continued fractions to end up at the result.
 Float2FractionFast ← { maxDen 𝕊 f:
     ! maxDen ≥ 1
-    NextConvergent ← { g‿p0‿q0‿p1‿q1:
-        ⟨÷(g-⌊g), p1, q1, p0+p1×⌊g, q0+q1×⌊g⟩
-    }
-
+    NextConvergent ← { g‿p0‿q0‿p1‿q1: ⟨÷(g-⌊g), p1, q1, p0+p1×⌊g, q0+q1×⌊g⟩ }
     ·‿·‿q0‿p1‿q1 ← c ← NextConvergent •_while_ { g‿·‿q0‿·‿q1: (q0+q1×⌊g) ≤ maxDen } ⟨f, 0, 1, 1, 0⟩
     ·‿·‿·‿n1‿d1 ← NextConvergent ⟨(maxDen-q0)÷q1⟩∾1↓c  # Best semi-convergent with denominator≤maxDen
     ⟨p1, q1⟩ <○{|f-÷´}◶⊢‿⊣ ⟨n1, d1⟩  # Return the fraction with the smallest absolute difference from f
@@ -26,6 +23,8 @@ Float2FractionFast ← { maxDen 𝕊 f:
 # Tests:
 ⟨_Assert1⟩ ⇐ •Import "deps/assert.bqn"
 
+(10 Float2FractionFast 0.33) ≡_Assert1 ⟨1, 3⟩
+(100 Float2FractionFast 0.33) ≡_Assert1 ⟨33, 100⟩
 (99 Float2FractionFast π) ≡_Assert1 ⟨311, 99⟩
 (99 Float2FractionFast ¯π) ≡_Assert1 ⟨¯311, 99⟩
 (1 Float2FractionFast π) ≡_Assert1 ⟨3, 1⟩
