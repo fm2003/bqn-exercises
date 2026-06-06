@@ -5,7 +5,7 @@ IsValidSudoku ← {𝕊s:
     "Sudoku shape must be formed of squares of integers" ! (⊢≡⌊⌾√) ≠s
     allNumbers ← 1+↕≠s
     columns ← ⍉s
-    blocks ← >({𝕩/˘𝕩/𝕩‿𝕩⥊↕𝕩⋆2}·√≠)⊸⊔ s
+    blocks ← ⟨≠s,≠s⟩⥊ 1⍉ ⟨∘,√≠s,√≠s⟩⥊ s
     (∧´ allNumbers⊸≡∘∧˘) (s∾columns∾blocks)
 }
 
