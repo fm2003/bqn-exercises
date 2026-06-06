@@ -5,7 +5,7 @@ Float2Fraction ← { maxDen 𝕊 f:
     ! maxDen ≥ 1
     denominators ← 1+↕maxDen
     numerators ← (××·⌊0.5+|) denominators×f
-    ((⊢⊐⌊´)·|f-÷´)⊸(⊑¨) ⟨numerators, denominators⟩
+    ((⊢⊐⌊´)·|f-÷´)⊸(⊑¨) ⟨numerators, denominators⟩  # Return the fraction with the smallest absolute difference from f
 }
 
 # This version uses continued fractions to end up at the result.
