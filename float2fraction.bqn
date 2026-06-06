@@ -5,8 +5,7 @@ Float2Fraction ← { maxDen 𝕊 f:
     ! maxDen ≥ 1
     denominators ← 1+↕maxDen
     numerators ← (××·⌊0.5+|) denominators×f
-    i ← ⊑⍋|f-numerators÷denominators  # Index of n÷d with lowest absolute difference from f
-    numerators ⋈○(i⊸⊑) denominators
+    ((⊢⊐⌊´)·|f-÷´)⊸(⊑¨) ⟨numerators, denominators⟩
 }
 
 # This version uses continued fractions to end up at the result.
@@ -15,7 +14,7 @@ Float2FractionFast ← { maxDen 𝕊 f:
     NextConvergent ← { g‿p0‿q0‿p1‿q1: ⟨÷(g-⌊g), p1, q1, p0+p1×⌊g, q0+q1×⌊g⟩ }
     ·‿·‿q0‿p1‿q1 ← c ← NextConvergent •_while_ { g‿·‿q0‿·‿q1: (q0+q1×⌊g) ≤ maxDen } ⟨f, 0, 1, 1, 0⟩
     ·‿·‿·‿n1‿d1 ← NextConvergent ⟨(maxDen-q0)÷q1⟩∾1↓c  # Best semi-convergent with denominator≤maxDen
-    ⟨p1, q1⟩ <○{|f-÷´}◶⊢‿⊣ ⟨n1, d1⟩  # Return the fraction with the smallest absolute difference from f
+    ⟨p1, q1⟩ ⊣⍟(<○(|f-÷´)) ⟨n1, d1⟩  # Return the fraction with the smallest absolute difference from f
 }
 
 •Show 50 Float2Fraction π
