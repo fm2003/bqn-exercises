@@ -6,7 +6,7 @@ Float2Fraction ← { maxDen 𝕊 f:
     denominators ← 1+↕maxDen
     numerators ← (××·⌊0.5+|) denominators×f
     i ← ⊑⍋|f-numerators÷denominators  # Index of n÷d with lowest absolute difference from f
-    i⊸⊑¨⟨numerators, denominators⟩
+    numerators ⋈○(i⊸⊑) denominators
 }
 
 # This version uses continued fractions to end up at the result.
@@ -18,6 +18,7 @@ Float2FractionFast ← { maxDen 𝕊 f:
     ⟨p1, q1⟩ <○{|f-÷´}◶⊢‿⊣ ⟨n1, d1⟩  # Return the fraction with the smallest absolute difference from f
 }
 
+•Show 50 Float2Fraction π
 •Show 50 Float2FractionFast π
 
 # Tests:
