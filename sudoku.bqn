@@ -2,11 +2,11 @@
 #   in the rows, columns, and blocks.
 # The array should have n×n rows and n×n columns (with n being an integer), otherwise an error is raised.
 IsValidSudoku ← {𝕊s:
-    "Sudoku shape must be formed of squares of integers" ! (≢s) ≡ ×˜⌊√≢s
+    "Sudoku shape must be formed of squares of integers" ! (≢s) ≡ ⌊⌾√≢s
+    allNumbers ← 1+↕≠s
     columns ← ⍉s
-    BlockIndices ← {𝕩/˘𝕩/𝕩‿𝕩⥊↕𝕩⋆2}
-    blocks ← >(BlockIndices √≠s) ⊔ s
-    {∧´ (1+↕1⊸⊑≢𝕩)⊸≡˘ ∧˘ 𝕩} (s∾columns∾blocks)
+    blocks ← >({𝕩/˘𝕩/𝕩‿𝕩⥊↕𝕩⋆2}·√≠)⊸⊔ s
+    (∧´ allNumbers⊸≡∘∧˘) (s∾columns∾blocks)
 }
 
 # Tests:
