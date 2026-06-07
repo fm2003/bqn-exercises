@@ -4,10 +4,9 @@
 GetWinner ← { 𝕊t:
     columns ← ⍉t
     diagonals ← [0‿0⍉t, 0‿0⍉⌽t]
-    unique ← ⍷¨<˘ t∾columns∾diagonals
-    winners ← {1=≠𝕩}¨⊸/ unique
-    hasEmptySpot ← ⊑'-'∊⥊t
-    { 0=≠winners ? hasEmptySpot⊸⊑⟨"Tie", "Ongoing"⟩ ; ⊑winners }
+    winners ← (1=≠)¨⊸/ ⍷¨<˘ t∾columns∾diagonals
+    noWinnerText ← { (⊑'-'∊⥊t) ? "Ongoing" ; "Tie" }
+    { (0=≠winners) ∨ winners≡⟨"-"⟩ ? noWinnerText ; ⊑winners }
 }
 
 # Tests:
@@ -17,3 +16,4 @@ GetWinner ← { 𝕊t:
 (GetWinner 3‿3⥊"OXXXO---O") ≡_Assert1 "O"
 (GetWinner 3‿3⥊"XXOO--OXX") ≡_Assert1 "Ongoing"
 (GetWinner 3‿3⥊"XOXOXXOXO") ≡_Assert1 "Tie"
+(GetWinner 3‿3⥊"---OXXOXO") ≡_Assert1 "Ongoing"
