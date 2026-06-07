@@ -16,7 +16,7 @@ YahtzeeScoreCard ← { 𝕊y:
         ⟨"Yahtzee",        (5 HasNOfAKind y)        × 50⟩
     ⟩
     scoreCard ← > upperSection ∾ lowerSection
-    0⊸≠∘(1⊸⊑˘)⊸/ scoreCard
+    (0≠1⊑˘⊢)⊸/ scoreCard
 }
 
 •Show YahtzeeScoreCard 1‿4‿3‿2‿5
