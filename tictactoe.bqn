@@ -1,4 +1,5 @@
 # Returns the winner on the given tic-tac-toe board.
+# Empty spots are represented by '-'.
 # If there are multiple winners, returns the first one.
 # If there are no winners, returns "Tie" if the game is over or "Ongoing" if there are empty spots left.
 GetWinner ← { 𝕊t:
