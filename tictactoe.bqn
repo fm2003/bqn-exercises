@@ -5,7 +5,8 @@ GetWinner ← { 𝕊t:
     columns ← ⍉t
     diagonals ← [0‿0⍉t, 0‿0⍉⌽t]
     winners ← (("-"≢⊢)∧(1=≠))¨⊸/ ⍷¨<˘ t∾columns∾diagonals
-    { (⊑'-'∊⥊t) ? "Ongoing" ; "Tie" } ⊣´ winners
+    noWinnerText ← { (⊑'-'∊⥊t) ? "Ongoing" ; "Tie" }
+    noWinnerText ⊣´ winners
 }
 
 # Tests:
