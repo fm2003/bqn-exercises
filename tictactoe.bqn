@@ -18,3 +18,4 @@ GetWinner ← { 𝕊t:
 (GetWinner 3‿3⥊"XOXOXXOXO") ≡_Assert1 "Tie"
 (GetWinner 3‿3⥊"---OXXOXO") ≡_Assert1 "Ongoing"
 (GetWinner 3‿3⥊"---XXXOXO") ≡_Assert1 "X"
+(GetWinner 3‿3⥊"---AAAOAO") ≡_Assert1 "A"
