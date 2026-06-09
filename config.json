@@ -1,0 +1,10 @@
+{
+    "key": 1,
+    "parent": {
+        "child": 2,
+        "sub": {"grandchild": 5 }
+    },
+    "list": [3, 1, 4],
+    "nestedList": [[6, 7], [8, 9]],
+    "obj": { "a": 1 }
+}

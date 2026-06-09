@@ -1,0 +1,11 @@
+{
+    "key": 2,
+    "parent": {
+        "child": 4,
+        "sub": { "winner": 1, "grandchild": 7 },
+        "extra": "x"
+    },
+    "list": [7, 8, 9],
+    "final": 0,
+    "obj": "lol"
+}
