@@ -5,9 +5,9 @@
 GetWinner ← { 𝕊t:
     columns ← ⍉t
     diagonals ← (⊢≍⌽)0‿0⍉t
-    winners ← ("-"⊸≢∧(1=≠))¨⊸/ ⍷¨<˘ t∾columns∾diagonals
+    winners ← ≠⟜'-'⊸/ ((⊣`≡⊢)˘/⊏˘) t∾columns∾diagonals
     noWinnerText ← { (∨´'-'=⥊t) ? "Ongoing" ; "Tie" }
-    noWinnerText ⊣´ winners
+    noWinnerText ⊣´ ⋈¨winners
 }
 
 # Tests:
