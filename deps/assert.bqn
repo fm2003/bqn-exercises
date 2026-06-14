@@ -1,12 +1,13 @@
 ⟨_Assert0, _Assert1⟩⇐
 
-FormatOperands ← {
-    𝕊𝕩: ∾⟨"𝕩:", @+10, •Fmt 𝕩⟩ ;
-    𝕨𝕊𝕩: ∾⟨"𝕨:", @+10, •Fmt 𝕨, @+10, FormatOperands 𝕩⟩
+FormatArguments ← { 𝕊values:
+    names ← ⌽'𝕩'-↕≠values
+    Format ← { ∾⟨@+10, 𝕨, ':', @+10, •Fmt 𝕩⟩ }
+    ∾ names Format¨ values
 }
 
 _Assert_ ← {
-    message ← "Result of " ∾ (•Fmt 𝕗) ∾ " was unexpectedly not " ∾ (•Fmt 𝕘) ∾ "." ∾ (@+10) ∾ 𝕨 FormatOperands 𝕩
+    message ← "Result of " ∾ (•Fmt 𝕗) ∾ " was unexpectedly not " ∾ (•Fmt 𝕘) ∾ "." ∾ FormatArguments 𝕨⋈𝕩
     Unpack ← (⟨⟩≡≢)⍟⊑  # Convert unit array to atom if needed
     message ! (𝕘 ≡ Unpack 𝕨𝔽𝕩)
 }
