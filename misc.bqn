@@ -6,9 +6,13 @@ RoundPos ← (·⌊0.5+⊢)⌾(10⊸×)  # round to nearest tenth, ties towards 
 Round ← (××·⌊0.5+|)⌾(10⊸×)  # round to nearest tenth, ties away from zero
 Round 3.149
 
-Without ← ¬∘∊/⊣
-NoConnections ← { Without´ ⌽<˘⍉> 𝕩 }
-NoConnections "BC"‿"DB"‿"CA"  # "A"
+# NoConnections ← (¬∘∊˜/⊢)˝·⍉>
+NoConnections ← {
+    [s, d] ← ⍉>𝕩
+    (¬d∊s)/d
+}
+•Show NoConnections "BC"‿"DB"‿"CA"  # "A"
+
 
 s←•Fmt 3.14
 Replace ← {
