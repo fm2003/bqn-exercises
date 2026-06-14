@@ -4,7 +4,7 @@ YahtzeeScoreCard ← { 𝕊y:
     HasNOfAKind ← {∨´𝕨≤/⁼𝕩}
     HasNSequentialDice ← {𝕨>≠⍷𝕩 ? 0 ; ∨´(𝕨-1)=-´˘0‿¯1⊸⊏˘𝕨↕∨⍷𝕩}
 
-    DieScoreRow ← {(•Fmt 𝕨)∾'s'} ⋈ ×
+    DieScoreRow ← { die𝕊count: ⟨(•Fmt die)∾'s', die×count⟩ }
     upperSection ← (⍷DieScoreRow¨/⁼∘⊐) ∧y
     lowerSection ← ⟨
         ⟨"Chance",                                   +´y⟩
