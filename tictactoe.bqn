@@ -13,7 +13,7 @@ GetWinner ← { 𝕊t:
 
 •Show GetWinner [
     "XOXX"
-    "OX-X"
+    "OXXX"
     "OOX-"
     "OOOX"
 ]
