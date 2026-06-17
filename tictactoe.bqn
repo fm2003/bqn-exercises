@@ -11,6 +11,13 @@ GetWinner ← { 𝕊t:
     noWinnerText ⊣´ ⋈¨winners
 }
 
+•Show GetWinner [
+    "XOXX"
+    "OX-X"
+    "OOX-"
+    "OOOX"
+]
+
 # Tests:
 ⟨_Assert1⟩ ⇐ •Import "deps/assert.bqn"
 
