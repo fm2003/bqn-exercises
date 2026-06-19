@@ -11,7 +11,7 @@ GetValue ← { keys𝕊jsonArray:
     GetDirectValue´ ⌽ ⟨jsonArray⟩∾(<⍟(1≡·≡⊢) keys)
 }
 
-# Assumes for now that all elements in 'objects' are JSON objects (not lists or strings etc.)
+# Assumes for now that all major cells in 'objects' are JSON objects (not lists or strings etc.)
 MergeJsonObjects ← { 𝕊objects:
     [keys, values] ← ∾˘´objects
     AreTwoObjects ← (∧´ 2=(≠¨∾=¨)∘⋈)  # if rank and length of both arguments are 2
