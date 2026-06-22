@@ -14,13 +14,6 @@ NoConnections ← {
 •Show NoConnections "BC"‿"DB"‿"CA"  # "A"
 
 
-s←•Fmt 3.14
-Replace ← {
-  ⟨old,new⟩ 𝕊 str:
-  str+(old=str)×new-str
-}
-⟨'.',','⟩ Replace s
-
 <⟜'a'⊸/ "Big Questions Notation"
 
 l ← ⟨ "a ← 1", "bbc ← 2", "123", "45", "bcqq ← 23", "bcc ← 230" ⟩
