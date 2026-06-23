@@ -48,7 +48,7 @@ YahtzeeScoreCard ← { 𝕊y:
 # --- Small straight:
 
 # Test all permutations which are small straights but not large straights
-p ← {(↕4)⊸≡∧𝕩}¨⊸/ ⥊↕4‿4‿4‿4  # permutations of 0 1 2 3
+p ← <˘ (≍↕0){∾˝(0∾˘1+𝕩)⊸⊏˘⍒˘=⌜˜↕𝕨}´-⟜↕4  # permutations of 0 1 2 3
 q ← ⥊p∾⌜(↕4)  # add one more die in the same range
 {⟨"Small Straight", 30⟩ ∊_Assert1 YahtzeeScoreCard 𝕩}¨ ∾´{q+𝕩}¨ 1+↕3
 
