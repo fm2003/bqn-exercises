@@ -3,10 +3,8 @@ ParseValue ← {
 }
 
 JsonListToDepthTable ← { 𝕊j:
-    sepOrSpaceMask ← j∊"[], "
-    sepStartMask ← (1⊸»<⊢) sepOrSpaceMask
     # TODO: this accepts space-separated numbers, which is not valid JSON
-    gi ← ¯1¨⌾(sepOrSpaceMask⊸/) +` sepStartMask
+    gi ← ¯1¨⌾(s⊸/) +` (1⊸»<⊢) s ← j∊"[], "
 
     elements ← ParseValue¨ gi ⊔ j
     depths ← ⊑¨ gi ⊔ +`(('['=⊢)-(']'=⊢)) j  # TODO: improve mask to avoid ⊑¨
