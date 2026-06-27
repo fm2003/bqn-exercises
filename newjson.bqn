@@ -12,5 +12,5 @@ JsonListToDepthTable ← { 𝕊j:
     ⍉elements≍depths
 }
 
-a ← "[123, ""hallo"", [67, 89,[10,11],12]"
+a ← "[123, ""hallo"", [67, 89,[10,11],12]]"
 •Show JsonListToDepthTable a
