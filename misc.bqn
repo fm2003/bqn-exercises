@@ -27,3 +27,12 @@ f ← > '←' ∊¨ l  # list indicating for each string whether there's an arro
 g ← l ⊔˜-⟜1+`¬0∾=´˘2↕f  # grouped by whether there's an arrow
 h ← ∾ {⌈´ (⊐⟜"←")¨ 𝕩}¨ g  # maximum index of arrow per group
 •Out¨ ∾ h {𝕨 PadBeforeArrow¨ 𝕩}¨ g
+
+FormatTruncatedToOneDecimal ← (⊢↑˜(≠⊢)⌊2+⊢⊐"."˙)∘•Fmt
+IntegerToListOfDigits ← {
+    "Input must be integer" ! ≡⟜⌊ 𝕩
+    NextDigit ← { n‿digits: ⟨⌊n÷10, (10|n)∾digits⟩}
+    n‿digits ← NextDigit •_while_ { n‿d: n>0 } ⟨⌊𝕩, ⟨⟩⟩
+    digits
+}
+•Show IntegerToListOfDigits 33
