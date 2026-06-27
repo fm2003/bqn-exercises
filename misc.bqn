@@ -30,16 +30,15 @@ h ← ∾ {⌈´ (⊐⟜"←")¨ 𝕩}¨ g  # maximum index of arrow per group
 
 FormatTruncatedToOneDecimal ← (⊢↑˜(≠⊢)⌊2+⊢⊐"."˙)∘•Fmt
 IntegerPartToListOfDigits ← {
-    n‿d ← { n‿d: ⟨⌊n÷10, d∾˜10|n⟩ } •_while_ {n‿d: n>0} ⌊𝕩‿⟨⟩
+    n‿d ← 10 { b𝕊n‿d: ⟨⌊n÷b, d∾˜b|n⟩ } •_while_ {b𝕊n‿d: n>0} ⌊𝕩‿⟨⟩
     d
 }
-IntegerPartToListOfDigits2 ← {
-    n ← ⌊𝕩
+IntegerPartToListOfDigits2 ← { 𝕊n:
     d ← ⟨⟩
-    { 𝕤
-        d ∾˜↩ 10|n
-        n ⌊∘÷↩ 10
-    } •_while_ {𝕤⋄n>0}@
+    10 {
+        d ∾˜↩ 𝕨|𝕩
+        𝕩 ⌊∘÷ 𝕨
+    } •_while_ {𝕩>0} ⌊n
     d
 }
 
