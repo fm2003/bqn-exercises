@@ -29,10 +29,19 @@ h ← ∾ {⌈´ (⊐⟜"←")¨ 𝕩}¨ g  # maximum index of arrow per group
 •Out¨ ∾ h {𝕨 PadBeforeArrow¨ 𝕩}¨ g
 
 FormatTruncatedToOneDecimal ← (⊢↑˜(≠⊢)⌊2+⊢⊐"."˙)∘•Fmt
-IntegerToListOfDigits ← {
-    "Input must be integer" ! ≡⟜⌊ 𝕩
-    NextDigit ← { n‿digits: ⟨⌊n÷10, (10|n)∾digits⟩}
-    n‿digits ← NextDigit •_while_ { n‿d: n>0 } ⟨⌊𝕩, ⟨⟩⟩
-    digits
+IntegerPartToListOfDigits ← {
+    n‿d ← { n‿d: ⟨⌊n÷10, d∾˜10|n⟩ } •_while_ {n‿d: n>0} ⌊𝕩‿⟨⟩
+    d
 }
-•Show IntegerToListOfDigits 33
+IntegerPartToListOfDigits2 ← {
+    n ← ⌊𝕩
+    d ← ⟨⟩
+    { 𝕤
+        d ∾˜↩ 10|n
+        n ⌊∘÷↩ 10
+    } •_while_ {𝕤⋄n>0}@
+    d
+}
+
+•Show IntegerPartToListOfDigits 33.13
+•Show IntegerPartToListOfDigits2 33.13
