@@ -35,9 +35,9 @@ IntegerPartToListOfDigits ← {
 }
 IntegerPartToListOfDigits2 ← { 𝕊n:
     d ← ⟨⟩
-    10 {
-        d ∾˜↩ 𝕨|𝕩
-        𝕩 ⌊∘÷ 𝕨
+    10 { b𝕊n:
+        d ∾˜↩ b|n
+        n ⌊∘÷ b
     } •_while_ {𝕩>0} ⌊n
     d
 }

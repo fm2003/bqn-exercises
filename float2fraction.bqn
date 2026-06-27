@@ -17,8 +17,20 @@ Float2FractionFast ← { maxDen 𝕊 f:
     ⟨p1, q1⟩ ⊣⍟(<○(|f-÷´)) ⟨n1, d1⟩  # Return the fraction with the smallest absolute difference from f
 }
 
+# Version with mutation
+Float2FractionFast2 ← { maxDen 𝕊 f:
+    ! maxDen ≥ 1
+    g‿p0‿q0‿p1‿q1 ← ⟨f, 0, 1, 1, 0⟩
+    UpdateConvergent ← { 𝕤 ⋄ g‿p0‿q0‿p1‿q1 ↩ ⟨(÷⊢-⌊)g, p1, q1, p0+p1×⌊g, q0+q1×⌊g⟩ }
+    ·‿·‿·‿k1‿l1 ← UpdateConvergent •_while_ { 𝕤 ⋄ (q0+q1×⌊g) ≤ maxDen }@
+    g ↩ (maxDen-q0)÷q1
+    UpdateConvergent @
+    ⟨k1, l1⟩ ⊣⍟(<○(|f-÷´)) ⟨p1, q1⟩  # Return the fraction with the smallest absolute difference from f
+}
+
 •Show 50 Float2Fraction π
 •Show 50 Float2FractionFast π
+•Show 50 Float2FractionFast2 π
 
 # Tests:
 ⟨_Assert1⟩ ⇐ •Import "deps/assert.bqn"
