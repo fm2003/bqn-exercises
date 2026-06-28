@@ -29,18 +29,3 @@ h ← ∾ {⌈´ (⊐⟜"←")¨ 𝕩}¨ g  # maximum index of arrow per group
 •Out¨ ∾ h {𝕨 PadBeforeArrow¨ 𝕩}¨ g
 
 FormatTruncatedToOneDecimal ← (⊢↑˜(≠⊢)⌊2+⊢⊐"."˙)∘•Fmt
-IntegerPartToListOfDigits ← {
-    n‿d ← 10 { b𝕊n‿d: ⟨⌊n÷b, d∾˜b|n⟩ } •_while_ {b𝕊n‿d: n>0} ⌊𝕩‿⟨⟩
-    d
-}
-IntegerPartToListOfDigits2 ← { 𝕊n:
-    d ← ⟨⟩
-    10 { b𝕊n:
-        d ∾˜↩ b|n
-        n ⌊∘÷ b
-    } •_while_ {𝕩>0} ⌊n
-    d
-}
-
-•Show IntegerPartToListOfDigits 33.13
-•Show IntegerPartToListOfDigits2 33.13
