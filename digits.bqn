@@ -24,7 +24,7 @@ IntegerPartToListOfDigitsWhile ← {
 IntegerPartToListOfDigitsRecursion ← {
     # Using recursion.
     ! 𝕩≥0
-    d ← { 𝕊0: ⟨⟩ ; 𝕊n: (𝕊n⌊∘÷10)∾10|n } ⌊𝕩
+    d ← { 𝕊0: ⟨⟩ ; 𝕊n: (𝕊⌊n÷10)∾10|n } ⌊𝕩
     d≢⟨⟩ ? d ; ⟨0⟩
 }
 
