@@ -23,8 +23,27 @@ j2 ← Parse •FChars "config2.json"
 j3 ← Parse •FChars "config3.json"
 
 •Show MergeJsonObjects j‿j2‿j3
+•Out "    " Parse⁼ MergeJsonObjects j‿j2‿j3
+
 
 # •Show "parent" GetValue j
 # •Show "parent"‿"sub"‿"grandchild" GetValue j
 # •Show "nestedList" GetValue j
 # # •Show ⟨"parent", "nonexist"⟩ GetValue j
+
+DepthTableToJsonString ← { ⟨keys, values, depths⟩:
+    curlyBraceOpenMask ← (⊢>») depths
+    curlyBraceCloseCounts ← (0⌈⊢-«) depths
+    •Show [curlyBraceOpenMask, keys, values, curlyBraceCloseCounts, depths]
+    •Out ∾ KeyLine˘ ⍉[curlyBraceOpenMask, keys, values, curlyBraceCloseCounts, depths]
+}
+
+KeyLine ← { ⟨o, k, v, c, d⟩:
+    closing ← ∾∾ {(@+10)∾(𝕩/⟨"    "⟩)∾"}"}¨ (d-1)-↕c
+    <∾⟨o/"{", @+10, d/"    ", """", k, """: ", •Fmt v, closing⟩
+}
+
+keys ← ⟨"key","parent","child","sub","grandchild","list","nestedlist","obj","a"⟩
+values ← 1‿⟨⟩‿2‿⟨⟩‿5‿⟨3, 1, 4⟩‿⟨⟨6, 7⟩, ⟨8, 9⟩⟩‿""‿1
+depths ← 1‿1‿2‿2‿3‿1‿1‿1‿2
+DepthTableToJsonString ⟨keys, values, depths⟩
