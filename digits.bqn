@@ -33,7 +33,7 @@ NumDigits ← (1+·⌊10⋆⁼0.5+1⌈⊢)  # +0.5 because of logarithm imprecis
 IntegerPartToListOfDigitsRepeat ← {
     # Using the Repeat primitive.
     ! 𝕩≥0
-    ⌽⌊10|÷⟜10⍟(↕NumDigits) ⌊𝕩
+    ⌽10|⌊÷⟜10⍟(↕NumDigits) ⌊𝕩
 }
 
 IntegerPartToListOfDigitsAP ← {
@@ -45,7 +45,7 @@ IntegerPartToListOfDigitsAP ← {
     # Every element modulo 10, and floored: ⟨4, 3, 2, 1⟩
     # Reverse: ⟨1, 2, 3, 4⟩
     ! 𝕩≥0
-    ⌽⌊10|(⊢÷10⋆·↕NumDigits) ⌊𝕩
+    ⌽10|⌊(⊢÷10⋆·↕NumDigits) ⌊𝕩
 }
 
 •Show IntegerPartToListOfDigitsMutation 1234.5
