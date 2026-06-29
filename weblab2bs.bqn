@@ -5,7 +5,7 @@ lines    ← •FLines stem∾".csv"
 ! ∨´"Student Number"⍷5⊑lines
 
 Split ← {(¯1¨⌾(s⊸/)+`s←','=𝕩)⊔𝕩}
-[studentNumbers, names, grades, passed] ← ⍉>Split¨ 6↓lines
+[studentNumbers, ·, grades, ·] ← ⍉>Split¨ 6↓lines
 gradesRounded ← (××·⌊0.5+|)⌾(2⊸×) •ParseFloat¨ grades
 
 eol    ← "#"¨studentNumbers
