@@ -4,9 +4,9 @@ lines    ← •FLines stem∾".csv"
 ! "Course,CSE1110"≡⊑lines
 ! ∨´"Student Number"⍷5⊑lines
 
-Split ← {(¯1¨⌾(s⊸/)+`s←','=𝕩)⊔𝕩}
+Split ← {(¯1¨⌾(s/⊢)+`s←','=𝕩)⊔𝕩}
 [studentNumbers, ·, grades, ·] ← ⍉>Split¨ 6↓lines
-gradesRounded ← (××·⌊0.5+|)⌾(2⊸×) •ParseFloat¨ grades
+gradesRounded ← (××·⌊0.5+|)⌾(2×⊢) •ParseFloat¨ grades
 
 eol    ← "#"¨studentNumbers
 header ← <"OrgDefinedId,"∾examName∾" Points Grade,End-of-Line Indicator"

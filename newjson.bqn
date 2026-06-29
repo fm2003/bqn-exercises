@@ -4,7 +4,7 @@ ParseValue ← {
 
 JsonListToDepthTable ← { 𝕊j:
     # TODO: this accepts space-separated numbers, which is not valid JSON
-    gi ← ¯1¨⌾(s⊸/) +` (1⊸»<⊢) s ← j∊"[], "
+    gi ← ¯1¨⌾(s/⊢)+`((1»⊢)<⊢) s←j∊"[], "
 
     elements ← ParseValue¨ gi ⊔ j
     depths ← ⊑¨ gi ⊔ +`(('['=⊢)-(']'=⊢)) j  # TODO: improve mask to avoid ⊑¨

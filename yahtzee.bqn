@@ -2,10 +2,10 @@
 # a player could pick from based on the given dice.
 YahtzeeScoreCard ← { 𝕊y:
     HasNOfAKind ← {∨´𝕨≤/⁼𝕩}
-    HasNSequentialDice ← {𝕨>≠⍷𝕩 ? 0 ; ∨´(𝕨-1)=-´˘0‿¯1⊸⊏˘𝕨↕∨⍷𝕩}
+    HasNSequentialDice ← {𝕨>≠⍷𝕩 ? 0 ; ∨´(𝕨-1)=(⊣´-⊢´)˘𝕨↕∨⍷𝕩}
 
     DieScoreRow ← { die𝕊count: ⟨(•Fmt die)∾'s', die×count⟩ }
-    upperSection ← (⍷DieScoreRow¨/⁼∘⊐) ∧y
+    upperSection ← (⍷DieScoreRow¨(/⁼⊐)) ∧y
     lowerSection ← ⟨
         ⟨"Chance",                                   +´y⟩
         ⟨"3 of a Kind",    (3 HasNOfAKind y)       × +´y⟩
@@ -16,7 +16,7 @@ YahtzeeScoreCard ← { 𝕊y:
         ⟨"Yahtzee",        (5 HasNOfAKind y)        × 50⟩
     ⟩
     scoreCard ← > upperSection ∾ lowerSection
-    (0≠1⊑˘⊢)⊸/ scoreCard
+    (⊢/˜0≠1⊑˘⊢) scoreCard
 }
 
 •Show YahtzeeScoreCard 1‿4‿3‿2‿5

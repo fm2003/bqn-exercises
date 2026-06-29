@@ -6,7 +6,7 @@ IsValidSudoku ← {𝕊s:
     allNumbers ← 1+↕≠s
     columns ← ⍉s
     blocks ← (≢s)⥊ 1⍉ ⟨∘,√≠s,√≠s⟩⥊ s
-    (∧´ allNumbers⊸≡∘∧˘) (s∾columns∾blocks)
+    ∧´ (allNumbers≡∧)˘ s∾columns∾blocks
 }
 
 # Tests:
