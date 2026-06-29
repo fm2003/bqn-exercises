@@ -1,7 +1,4 @@
-Words ⇐ { 𝕊s:
-    wordIndices ← ¯1¨⌾(i/⊢)+`(⊢>1»⊢) i←' '=s
-    wordIndices ⊔ s
-}
+Words ⇐ {(¯1¨⌾(i/⊢)+`(⊢>1»⊢) i←' '=𝕩)⊔𝕩}
 
 ReplaceSquareByAngular ← { ('⟨'+']'=⊢)⌾((𝕩∊"[]")/⊢) 𝕩 }
 ReplaceAngularBySquare ← { ('['+2×'⟩'=⊢)⌾((𝕩∊"⟨⟩")/⊢) 𝕩 }
