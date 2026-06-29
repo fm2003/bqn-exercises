@@ -28,7 +28,7 @@ IntegerPartToListOfDigitsRecursion ← {
     d≢⟨⟩ ? d ; ⟨0⟩
 }
 
-NumDigits ← (1+·⌊10⋆⁼0.5+1⌈⊢)  # +0.5 because of logarithm imprecision, and 1⌈ because of 0
+NumDigits ← {1+⌊•math.Log10 1⌈𝕩}  # 1⌈ because of 0
 
 IntegerPartToListOfDigitsRepeat ← {
     # Using the Repeat primitive.
