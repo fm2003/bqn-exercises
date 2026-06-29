@@ -1,5 +1,5 @@
 Words ⇐ { 𝕊s:
-    wordIndices ← ¯1¨⌾(i/⊢)+`((1»⊢)<⊢) i←' '=s
+    wordIndices ← ¯1¨⌾(i/⊢)+`(⊢>1»⊢) i←' '=s
     wordIndices ⊔ s
 }
 
