@@ -1,22 +1,22 @@
 # Returns a Yahtzee score card that shows which scores
 # a player could pick from based on the given dice.
 YahtzeeScoreCard ← { 𝕊y:
-    HasNOfAKind ← (∨´⊣≤·/⁼⊢)
-    HasNSequentialDice ← {𝕨>≠⍷𝕩 ? 0 ; <⁼(↕𝕨)∊(⊢-⊏˘)𝕨↕∧⍷𝕩}
+    highestFreq ← ⌈´/⁼y
+    deltas ← 1↓+`⁼∧⍷y
 
     DieScoreRow ← { die𝕊count: ⟨(•Fmt die)∾'s', die×count⟩ }
     upperSection ← (⍷DieScoreRow¨(/⁼⊐)) ∧y
     lowerSection ← ⟨
-        ⟨"Chance",                                   +´y⟩
-        ⟨"3 of a Kind",    (3 HasNOfAKind y)       × +´y⟩
-        ⟨"4 of a Kind",    (4 HasNOfAKind y)       × +´y⟩
-        ⟨"Full House",     {⟨3, 2⟩ ≡ 2↑∨/⁼ y}       × 25⟩
-        ⟨"Small Straight", (4 HasNSequentialDice y) × 30⟩
-        ⟨"Large Straight", (5 HasNSequentialDice y) × 40⟩
-        ⟨"Yahtzee",        (5 HasNOfAKind y)        × 50⟩
+        ⟨"Chance",        +´y⟩
+        ⟨"3 of a Kind",   +´y × 3≤highestFreq⟩
+        ⟨"4 of a Kind",   +´y × 4≤highestFreq⟩
+        ⟨"Full House",     25 × ⟨3, 2⟩≡2↑∨/⁼y⟩
+        ⟨"Small Straight", 30 × ∨´deltas⍷˜3⥊1⟩
+        ⟨"Large Straight", 40 × ∨´deltas⍷˜4⥊1⟩
+        ⟨"Yahtzee",        50 × 5≤highestFreq⟩
     ⟩
     scoreCard ← > upperSection ∾ lowerSection
-    (⊢/˜0≠1⊑˘⊢) scoreCard
+    (⊢/˜0≠⊢´˘) scoreCard
 }
 
 •Show YahtzeeScoreCard 1‿4‿3‿2‿5

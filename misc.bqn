@@ -1,6 +1,7 @@
 _st ← {1↓(⊢𝔽»)}
 
 •Show ∧´ =_st -_st ∧ 3‿1‿7‿9‿5
+•Show ((⊣`≡⊢)1↓·+`⁼∧) 3‿1‿7‿9‿5
 
 RoundPos ← (·⌊0.5+⊢)⌾(10×⊢)  # round to nearest tenth, ties towards infinity
 Round ← (××·⌊0.5+|)⌾(10×⊢)  # round to nearest tenth, ties away from zero
