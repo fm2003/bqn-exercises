@@ -1,7 +1,9 @@
 # Returns a Yahtzee score card that shows which scores
 # a player could pick from based on the given dice.
 YahtzeeScoreCard ← { 𝕊y:
-    DieScoreRow ← { die𝕊count: ⟨(•Fmt die)∾'s', die×count⟩ }
+    DieScoreRow ← { die𝕊count:
+        ⟨(•Fmt die)∾'s',  die × count⟩
+    }
     upperSection ← (⍷DieScoreRow¨(/⁼⊐)) ∧y
     maxFreq ← ⌈´/⁼y
     deltas ← 1↓+`⁼∧⍷y
