@@ -2,7 +2,7 @@
 # a player could pick from based on the given dice.
 YahtzeeScoreCard ← { 𝕊y:
     HasNOfAKind ← (∨´⊣≤·/⁼⊢)
-    HasNSequentialDice ← {𝕨>≠⍷𝕩 ? 0 ; ∨´(𝕨-1)=(⊣´-⊢´)˘𝕨↕∨⍷𝕩}
+    HasNSequentialDice ← {𝕨>≠⍷𝕩 ? 0 ; <⁼(↕𝕨)∊(⊢-⊏˘)𝕨↕∧⍷𝕩}
 
     DieScoreRow ← { die𝕊count: ⟨(•Fmt die)∾'s', die×count⟩ }
     upperSection ← (⍷DieScoreRow¨(/⁼⊐)) ∧y
