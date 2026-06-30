@@ -6,8 +6,8 @@
 GetWinner ← { 𝕊t:
     columns ← ⍉t
     diagonals ← (⊢≍⌽)0‿0⍉t
-    A ← ('-'≠⊏)∧⊣`≡⊢
-    winners ← (A˘/⊏˘) t∾columns∾diagonals
+    IsWinningRow ← ('-'≠⊏)∧⊣`≡⊢
+    winners ← (IsWinningRow˘/⊏˘) t∾columns∾diagonals
     noWinnerText ← { ∨´'-'=⥊t ? "Ongoing" ; "Tie" }
     noWinnerText ⊣´ ⋈¨winners
 }
