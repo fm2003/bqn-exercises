@@ -6,8 +6,8 @@
 GetWinner ← { 𝕊t:
     columns ← ⍉t
     diagonals ← (⊢≍⌽)0‿0⍉t
-    AllEqual ← ('-'≠⊏)∧⊣`≡⊢  # All the same characters, but not all '-'
-    winners ← (AllEqual˘/⊏˘) t∾columns∾diagonals
+    A ← ('-'≠⊏)∧⊣`≡⊢
+    winners ← (A˘/⊏˘) t∾columns∾diagonals
     noWinnerText ← { ∨´'-'=⥊t ? "Ongoing" ; "Tie" }
     noWinnerText ⊣´ ⋈¨winners
 }
