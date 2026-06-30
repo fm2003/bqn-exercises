@@ -1,19 +1,18 @@
 # Returns a Yahtzee score card that shows which scores
 # a player could pick from based on the given dice.
 YahtzeeScoreCard ← { 𝕊y:
-    highestFreq ← ⌈´/⁼y
-    deltas ← 1↓+`⁼∧⍷y
-
     DieScoreRow ← { die𝕊count: ⟨(•Fmt die)∾'s', die×count⟩ }
     upperSection ← (⍷DieScoreRow¨(/⁼⊐)) ∧y
+    maxFreq ← ⌈´/⁼y
+    deltas ← 1↓+`⁼∧⍷y
     lowerSection ← ⟨
         ⟨"Chance",        +´y⟩
-        ⟨"3 of a Kind",   +´y × 3≤highestFreq⟩
-        ⟨"4 of a Kind",   +´y × 4≤highestFreq⟩
-        ⟨"Full House",     25 × ⟨3, 2⟩≡2↑∨/⁼y⟩
+        ⟨"3 of a Kind",   +´y × 3≤maxFreq⟩
+        ⟨"4 of a Kind",   +´y × 4≤maxFreq⟩
+        ⟨"Full House",     25 × 3‿2≡2↑∨/⁼y⟩
         ⟨"Small Straight", 30 × ∨´deltas⍷˜3⥊1⟩
         ⟨"Large Straight", 40 × ∨´deltas⍷˜4⥊1⟩
-        ⟨"Yahtzee",        50 × 5≤highestFreq⟩
+        ⟨"Yahtzee",        50 × 5≤maxFreq⟩
     ⟩
     scoreCard ← > upperSection ∾ lowerSection
     (⊢/˜0≠⊢´˘) scoreCard
