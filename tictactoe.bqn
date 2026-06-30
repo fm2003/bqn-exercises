@@ -5,7 +5,7 @@
 # If there are no winners, returns "Tie" if the game is over or "Ongoing" if there are empty spots left.
 GetWinner ← { 𝕊t:
     columns ← ⍉t
-    diagonals ← >(0‿0⍉⊢)¨(⊢⋈⌽)t
+    diagonals ← (0‿0⍉⊢)˘(⊢≍⌽)t
     winners ← (⊢/˜'-'≠⊢) ((⊣`≡⊢)˘/⊏˘) t∾columns∾diagonals
     noWinnerText ← { ∨´'-'=⥊t ? "Ongoing" ; "Tie" }
     noWinnerText ⊣´ ⋈¨winners
