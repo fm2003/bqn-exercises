@@ -2,7 +2,7 @@
 
 # Returns how many times each word occurs in the file with the given name.
 # Currently returns a list of lists where the count comes last,
-# but depending on the use case it might be more useful to have the count first (so you can sort on it)
+# but depending on the use case it might be more useful to have two separate lists
 # or to return a HashMap (or something else).
 WordFrequencies ← { 𝕊filename:
     words ← ∾ Words⚇1 •FLines filename
