@@ -1,7 +1,7 @@
 # Returns a Yahtzee score card that shows which scores
 # a player could pick from based on the given dice.
 YahtzeeScoreCard ← { 𝕊y:
-    HasNOfAKind ← {∨´𝕨≤/⁼𝕩}
+    HasNOfAKind ← (∨´⊣≤·/⁼⊢)
     HasNSequentialDice ← {𝕨>≠⍷𝕩 ? 0 ; ∨´(𝕨-1)=(⊣´-⊢´)˘𝕨↕∨⍷𝕩}
 
     DieScoreRow ← { die𝕊count: ⟨(•Fmt die)∾'s', die×count⟩ }
