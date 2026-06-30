@@ -5,7 +5,7 @@
 # but depending on the use case it might be more useful to have the count first (so you can sort on it)
 # or to return a HashMap (or something else).
 WordFrequencies ← { 𝕊filename:
-    words ← ∾ Words¨ (' '∾⊢)¨ •FLines filename
+    words ← ∾ Words⚇1 •FLines filename
     (⍷⋈¨(/⁼⊐)) words
 }
 
