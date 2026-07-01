@@ -18,15 +18,16 @@ NoConnections ← {
 •Show (⊢/˜'a'>⊢) "Big Questions Notation"
 
 l ← ⟨ "a ← 1", "bbc ← 2", "123", "45", "bcqq ← 23", "bcc ← 230" ⟩
-PadBeforeArrow ← {
-  index ← ⊑𝕩⊐"←"
-  isMember ← index ≠ ≠𝕩
-  index (↑∾(" "⥊˜0⌈𝕨-⊣)∾↓)⍟isMember 𝕩
+AlignArrows ← {𝕊l:
+    ai ← ∾(⊢⊐"←"˙)¨l         # index of first arrow for each line
+    ha ← ai<≠¨l              # whether it has an arrow
+    gi ← +`(»«≠⊢) ha         # index for grouping by whether there is an arrow
+    ti ← (⌈´⊣`⊢)¨⌾(gi⊔⊢) ai  # index at which the arrow should end up for each line
+    s  ← (⊢⥊" "˙)¨ha×ti-ai   # spaces to add
+    ba ← ai↑¨l               # part before arrow
+    aa ← ai↓¨l               # part after arrow
+    ba∾¨s∾¨aa                # result
 }
-
-f ← >'←'∊¨l  # list indicating for each string whether there's an arrow
-g ← l⊔˜(1-˜·+`»≠⊢)f  # grouped by whether there's an arrow
-h ← ⌈´¨(⊑⊢⊐"←"˙)⚇1 g  # maximum index of arrow per group
-•Out¨ ∾ h {𝕨 PadBeforeArrow¨ 𝕩}¨ g
+•Out¨ AlignArrows l
 
 FormatTruncatedToOneDecimal ← (⊢↑˜(≠⊢)⌊2+⊢⊐"."˙)∘•Fmt

@@ -56,7 +56,7 @@ IntegerPartToListOfDigitsAP ← {
     # Using pure array programming.
     # Example for 1234:
     # 1234÷⟨1, 10, 100, 1000⟩ = ⟨1234, 123.4, 12.34, 1.234⟩
-    # After applying 10|⌊: ⟨4, 3, 2  1⟩
+    # After applying 10|⌊: ⟨4, 3, 2, 1⟩
     # After applying reverse: ⟨1, 2, 3, 4⟩
     ! 𝕩≥0
     ⌽10|⌊(⊢÷10⋆·↕NumDigits) ⌊𝕩
