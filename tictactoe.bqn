@@ -1,8 +1,8 @@
 # Returns the winner on the given tic-tac-toe board.
 # Empty spots are represented by '-'.
 # Someone wins if they filled an entire row, column, or diagonal with their character.
-# If there are multiple winners, returns the first one.
 # If there are no winners, returns "Tie" if the game is over or "Ongoing" if there are empty spots left.
+# If there are multiple winners, returns the first one.
 GetWinner ← { 𝕊t:
     columns ← ⍉t
     diagonals ← (0‿0⍉⊢)˘(⊢≍⌽)t
