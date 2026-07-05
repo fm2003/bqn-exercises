@@ -1,21 +1,9 @@
-Split ← {
-    𝕨𝕊⁼𝕩: (1↓·∾𝕨∾¨⊢) 𝕩 ;
-    (¯1¨⌾(s/⊢)+`s←𝕨=𝕩)⊔𝕩
-}
-RoundDecimalToHalves ← {
-    "There must be exactly one dot" ! 1=+´𝕩∊"."
-    "There must only be digits or '.'" ! ∧´ 𝕩∊'.'∾'0'+↕10
-    RoundParts ← {
-        # convert the part before the '.'
-        # and the first two digits after the '.'
-        # to integers
-        i‿d ← ((⊣+10×⊢)´⌽)¨ (2↑⊢)⌾(1⊑⊢) (⊢-'0'˙) 𝕩
-        •Fmt¨ <⁼(25‿75⍋d)⊏⟨i∾0, i∾5, (i+1)∾0⟩
-    }
-    RoundParts⌾('.'Split⊢) 𝕩
-}
+⟨Split⟩ ⇐ •Import "deps/strings.bqn"
+
+ParseFloat ← { 𝕊⁼𝕩: •Fmt 𝕩 ; •ParseFloat 𝕩 }
+
 WebLab2BS ← { ⟨studentNumber, ·, grade, ·⟩:
-    ⟨studentNumber, RoundDecimalToHalves grade, "#"⟩
+    ⟨studentNumber, (⌊0.5+⊢)⌾(2×ParseFloat) grade, "#"⟩
 }
 
 examName ← "Endterm exam"
