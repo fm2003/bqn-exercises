@@ -8,13 +8,13 @@ YahtzeeScoreCard ← { 𝕊y:
     maxFreq ← ⌈´/⁼y
     deltas ← 1↓+`⁼∧⍷y
     lowerSection ← ⟨
-        ⟨"Chance",        +´y⟩
-        ⟨"3 of a Kind",   +´y × 3≤maxFreq⟩
-        ⟨"4 of a Kind",   +´y × 4≤maxFreq⟩
-        ⟨"Full House",     25 × 3‿2≡2↑∨/⁼y⟩
-        ⟨"Small Straight", 30 × ∨´deltas⍷˜3⥊1⟩
-        ⟨"Large Straight", 40 × ∨´deltas⍷˜4⥊1⟩
-        ⟨"Yahtzee",        50 × 5≤maxFreq⟩
+        ⟨"Chance",         +´y⟩
+        ⟨"3 of a Kind",    +´y × 3≤maxFreq⟩
+        ⟨"4 of a Kind",    +´y × 4≤maxFreq⟩
+        ⟨"Full House",     25  × 3‿2≡2↑∨/⁼y⟩
+        ⟨"Small Straight", 30  × ∨´deltas⍷˜3⥊1⟩
+        ⟨"Large Straight", 40  × ∨´deltas⍷˜4⥊1⟩
+        ⟨"Yahtzee",        50  × 5≤maxFreq⟩
     ⟩
     scoreCard ← > upperSection ∾ lowerSection
     (⊢/˜0≠⊢´˘) scoreCard
